@@ -21,12 +21,22 @@ class SwitchBot:
         self.p.disconnect()
         raise NotImplementedError()
 
-if __name__ == "__main__":
+if __name__ == "__main__": #importでプログラムが動かないように
     from optparse import OptionParser
     parser = OptionParser()
     parser.add_option("-a", "--address", dest="addr", help="MAC address of SwitchBot")
     parser.add_option("-c", "--command", dest="cmd",  help="Command for SwitchBot (press|on|off)")
     (options, args) = parser.parse_args()
 
-    getattr(SwitchBot(options.addr), options.cmd)()
+    clsd = SwitchBot(options.addr)
+
+
+    getattr(clsd, options.cmd)()
+
+
+    getattr(clsd, "on")() #    switchbot.press
+    getattr(clsd, "off")()
+    
+    #soil-switchbot-explanation.py -a macaddress -c press　と打った場合、
+    #SwitchBot(macaddress).press として処理される？
 
