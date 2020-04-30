@@ -14,12 +14,14 @@ class SwitchBot:
         self.p.disconnect()
 
     def on(self):
+        self.hand.write(binascii.a2b_hex("570103")) #スイッチON命令
         self.p.disconnect()
-        raise NotImplementedError()
+        #raise NotImplementedError()
 
     def off(self):
+        self.hand.write(binascii.a2b_hex("570104")) #スイッチOFF命令
         self.p.disconnect()
-        raise NotImplementedError()
+        #raise NotImplementedError()
 
 if __name__ == "__main__":
     from optparse import OptionParser
